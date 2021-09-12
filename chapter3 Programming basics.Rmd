@@ -4,10 +4,10 @@ output:
   html_document:
     df_print: paged
 ---
-#Chapter 3 Programming basics
+# Chapter 3 Programming basics
 We teach R because it greatly facilitates data analysis, the main topic of this book. By coding in R, we can efficiently perform exploratory data analysis, build data analysis pipelines, and prepare data visualization to communicate results. However, R is not just a data analysis environment but a programming language. Advanced R programmers can develop complex packages and even improve R itself, but we do not cover advanced programming in this book. Nonetheless, in this section, we introduce three key programming concepts: conditional expressions, for-loops, and functions. These are not just key building blocks for advanced programming, but are sometimes useful during data analysis. We also note that there are several functions that are widely used to program in R but that we will not cover in this book. These include split, cut, do.call, and Reduce, as well as the data.table package. These are worth learning if you plan to become an expert R programmer.
 
-##3.1 Conditional expressions
+## 3.1 Conditional expressions
 Conditional expressions are one of the basic features of programming. They are used for what is called flow control. The most common conditional expression is the if-else statement. In R, we can actually perform quite a bit of data analysis without conditionals. However, they do come up occasionally, and you will need them once you start writing your own functions and packages.
 
 Here is a very simple example showing the general structure of an if-else statement. The basic idea is to print the reciprocal of a unless a is 0:
@@ -81,7 +81,7 @@ any(z)
 all(z)
 
 ```
-##3.2 Defining functions
+## 3.2 Defining functions
 As you become more experienced, you will find yourself needing to perform the same operations over and over. A simple example is computing averages. We can compute the average of a vector x using the sum and length functions: sum(x)/length(x). Because we do this repeatedly, it is much more efficient to write a function that performs this operation. This particular operation is so common that someone already wrote the mean function and it is included in base R. However, you will encounter situations in which the function does not already exist, so R permits you to write your own. A simple version of a function that computes the average can be defined like this:
 
 ```{r}
@@ -123,7 +123,7 @@ avg <- function(x, arithmetic = TRUE){
 ```
 We will learn more about how to create functions through experience as we face more complex tasks.
 
-##3.3 Namespaces
+## 3.3 Namespaces
 
 Once you start becoming more of an R expert user, you will likely need to load several add-on packages for some of your analysis. Once you start doing this, it is likely that two packages use the same name for two different functions. And often these functions do completely different things. In fact, you have already encountered this because both dplyr and the R-base stats package define a filter function. There are five other examples in dplyr. We know this because when we first load dplyr we see the following message:
 
@@ -209,7 +209,7 @@ plot(n, s_n)
 If you noticed that it appears to be a quadratic, you are on the right track because the formula is  
 n(n+1)/2
  .
-##3.5 Vectorization and functionals
+## 3.5 Vectorization and functionals
 Although for-loops are an important concept to understand, in R we rarely use them. As you learn more R, you will realize that vectorization is preferred over for-loops since it results in shorter and clearer code. We already saw examples in the Vector Arithmetic section. A vectorized function is a function that will apply the same operation on each of the vectors.
 
 
@@ -247,7 +247,7 @@ s_n <- sapply(n, compute_s_n)
 
 Other functionals are apply, lapply, tapply, mapply, vapply, and replicate. We mostly use sapply, apply, and replicate in this book, but we recommend familiarizing yourselves with the others as they can be very useful.
 
-##3.6 Exercises
+## 3.6 Exercises
 1. What will this conditional expression return?
 
 ```{r}
@@ -340,6 +340,7 @@ s_n <- vector("numeric", 25)
 for(i in 1:25){
   s_n[i] <- compute_s_n(i)
 }
+s_n
 ```
 
 9. Repeat exercise 8, but this time use sapply.
@@ -350,9 +351,9 @@ sapply(x, compute_s_n)
 
 10. Repeat exercise 8, but this time use map_dbl.
 ```{r}
-install.packages("purrr", repos="http://cran.us.r-project.org")
+
 library(purrr)
-map_dbl(25, compute_s_n)
+map_dbl(1:25, compute_s_n)
 ```
 
 11. Plot  

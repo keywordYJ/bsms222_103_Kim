@@ -194,8 +194,12 @@ summary {
 </div>
 
 
-<p>#Chapter 3 Programming basics We teach R because it greatly facilitates data analysis, the main topic of this book. By coding in R, we can efficiently perform exploratory data analysis, build data analysis pipelines, and prepare data visualization to communicate results. However, R is not just a data analysis environment but a programming language. Advanced R programmers can develop complex packages and even improve R itself, but we do not cover advanced programming in this book. Nonetheless, in this section, we introduce three key programming concepts: conditional expressions, for-loops, and functions. These are not just key building blocks for advanced programming, but are sometimes useful during data analysis. We also note that there are several functions that are widely used to program in R but that we will not cover in this book. These include split, cut, do.call, and Reduce, as well as the data.table package. These are worth learning if you plan to become an expert R programmer.</p>
-<p>##3.1 Conditional expressions Conditional expressions are one of the basic features of programming. They are used for what is called flow control. The most common conditional expression is the if-else statement. In R, we can actually perform quite a bit of data analysis without conditionals. However, they do come up occasionally, and you will need them once you start writing your own functions and packages.</p>
+<div id="chapter-3-programming-basics" class="section level1">
+<h1>Chapter 3 Programming basics</h1>
+<p>We teach R because it greatly facilitates data analysis, the main topic of this book. By coding in R, we can efficiently perform exploratory data analysis, build data analysis pipelines, and prepare data visualization to communicate results. However, R is not just a data analysis environment but a programming language. Advanced R programmers can develop complex packages and even improve R itself, but we do not cover advanced programming in this book. Nonetheless, in this section, we introduce three key programming concepts: conditional expressions, for-loops, and functions. These are not just key building blocks for advanced programming, but are sometimes useful during data analysis. We also note that there are several functions that are widely used to program in R but that we will not cover in this book. These include split, cut, do.call, and Reduce, as well as the data.table package. These are worth learning if you plan to become an expert R programmer.</p>
+<div id="conditional-expressions" class="section level2">
+<h2>3.1 Conditional expressions</h2>
+<p>Conditional expressions are one of the basic features of programming. They are used for what is called flow control. The most common conditional expression is the if-else statement. In R, we can actually perform quite a bit of data analysis without conditionals. However, they do come up occasionally, and you will need them once you start writing your own functions and packages.</p>
 <p>Here is a very simple example showing the general structure of an if-else statement. The basic idea is to print the reciprocal of a unless a is 0:</p>
 <pre class="r"><code>a &lt;- 0
 
@@ -244,7 +248,10 @@ any(z)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>all(z)</code></pre>
 <pre><code>## [1] FALSE</code></pre>
-<p>##3.2 Defining functions As you become more experienced, you will find yourself needing to perform the same operations over and over. A simple example is computing averages. We can compute the average of a vector x using the sum and length functions: sum(x)/length(x). Because we do this repeatedly, it is much more efficient to write a function that performs this operation. This particular operation is so common that someone already wrote the mean function and it is included in base R. However, you will encounter situations in which the function does not already exist, so R permits you to write your own. A simple version of a function that computes the average can be defined like this:</p>
+</div>
+<div id="defining-functions" class="section level2">
+<h2>3.2 Defining functions</h2>
+<p>As you become more experienced, you will find yourself needing to perform the same operations over and over. A simple example is computing averages. We can compute the average of a vector x using the sum and length functions: sum(x)/length(x). Because we do this repeatedly, it is much more efficient to write a function that performs this operation. This particular operation is so common that someone already wrote the mean function and it is included in base R. However, you will encounter situations in which the function does not already exist, so R permits you to write your own. A simple version of a function that computes the average can be defined like this:</p>
 <pre class="r"><code>avg &lt;- function(x){
   s &lt;- sum(x)
   n &lt;- length(x)
@@ -272,7 +279,9 @@ avg &lt;- function(x, arithmetic = TRUE){
   ifelse(arithmetic, sum(x)/n, prod(x)^(1/n))
 }</code></pre>
 <p>We will learn more about how to create functions through experience as we face more complex tasks.</p>
-<p>##3.3 Namespaces</p>
+</div>
+<div id="namespaces" class="section level2">
+<h2>3.3 Namespaces</h2>
 <p>Once you start becoming more of an R expert user, you will likely need to load several add-on packages for some of your analysis. Once you start doing this, it is likely that two packages use the same name for two different functions. And often these functions do completely different things. In fact, you have already encountered this because both dplyr and the R-base stats package define a filter function. There are five other examples in dplyr. We know this because when we first load dplyr we see the following message:</p>
 <p>The following objects are masked from ‘package:stats’:</p>
 <pre><code>filter, lag</code></pre>
@@ -357,7 +366,7 @@ search()</code></pre>
 ##     else &quot;ts&quot;
 ##     y
 ## }
-## &lt;bytecode: 0x0000000012d41770&gt;
+## &lt;bytecode: 0x0000000012d3ba50&gt;
 ## &lt;environment: namespace:stats&gt;</code></pre>
 <p>If we want to be absolutely sure that we use the dplyr filter, we can use</p>
 <pre class="r"><code>dplyr::filter</code></pre>
@@ -365,7 +374,7 @@ search()</code></pre>
 ## {
 ##     UseMethod(&quot;filter&quot;)
 ## }
-## &lt;bytecode: 0x000000001cce8ff8&gt;
+## &lt;bytecode: 0x000000001ccf7650&gt;
 ## &lt;environment: namespace:dplyr&gt;</code></pre>
 <p>Also note that if we want to use a function in a package without loading the entire package, we can use the double colon as well.</p>
 <p>For more on this more advanced topic we recommend the R packages book</p>
@@ -400,7 +409,7 @@ n=1, n=2, etc…, we compute Sn and store it in the n th entry of s_n.</p>
 plot(n, s_n)</code></pre>
 <p><img src="data:image/png;base64,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" width="672" /></p>
 <p>If you noticed that it appears to be a quadratic, you are on the right track because the formula is<br />
-n(n+1)/2 . ##3.5 Vectorization and functionals Although for-loops are an important concept to understand, in R we rarely use them. As you learn more R, you will realize that vectorization is preferred over for-loops since it results in shorter and clearer code. We already saw examples in the Vector Arithmetic section. A vectorized function is a function that will apply the same operation on each of the vectors.</p>
+n(n+1)/2 . ## 3.5 Vectorization and functionals Although for-loops are an important concept to understand, in R we rarely use them. As you learn more R, you will realize that vectorization is preferred over for-loops since it results in shorter and clearer code. We already saw examples in the Vector Arithmetic section. A vectorized function is a function that will apply the same operation on each of the vectors.</p>
 <pre class="r"><code>x &lt;- 1:10
 sqrt(x)</code></pre>
 <pre><code>##  [1] 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751 2.828427
@@ -424,7 +433,12 @@ sapply(x, sqrt)</code></pre>
 <pre class="r"><code>n &lt;- 1:25
 s_n &lt;- sapply(n, compute_s_n)</code></pre>
 <p>Other functionals are apply, lapply, tapply, mapply, vapply, and replicate. We mostly use sapply, apply, and replicate in this book, but we recommend familiarizing yourselves with the others as they can be very useful.</p>
-<p>##3.6 Exercises 1. What will this conditional expression return?</p>
+</div>
+<div id="exercises" class="section level2">
+<h2>3.6 Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>What will this conditional expression return?</li>
+</ol>
 <pre class="r"><code>x &lt;- c(1,2,-3,4)
 
 if(all(x&gt;0)){
@@ -515,7 +529,10 @@ s_n &lt;- vector(&quot;numeric&quot;, 25)
 
 for(i in 1:25){
   s_n[i] &lt;- compute_s_n(i)
-}</code></pre>
+}
+s_n</code></pre>
+<pre><code>##  [1]    1    5   14   30   55   91  140  204  285  385  506  650  819 1015 1240
+## [16] 1496 1785 2109 2470 2870 3311 3795 4324 4900 5525</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>Repeat exercise 8, but this time use sapply.</li>
 </ol>
@@ -526,23 +543,11 @@ sapply(x, compute_s_n)</code></pre>
 <ol start="10" style="list-style-type: decimal">
 <li>Repeat exercise 8, but this time use map_dbl.</li>
 </ol>
-<pre class="r"><code>install.packages(&quot;purrr&quot;, repos=&quot;http://cran.us.r-project.org&quot;)</code></pre>
-<pre><code>## Installing package into &#39;C:/Users/kkyj5/Documents/R/win-library/4.0&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<pre><code>## package &#39;purrr&#39; successfully unpacked and MD5 sums checked</code></pre>
-<pre><code>## Warning: cannot remove prior installation of package &#39;purrr&#39;</code></pre>
-<pre><code>## Warning in file.copy(savedcopy, lib, recursive = TRUE): C:
-## \Users\kkyj5\Documents\R\win-library\4.0\00LOCK\purrr\libs\x64\purrr.dll를 C:
-## \Users\kkyj5\Documents\R\win-library\4.0\purrr\libs\x64\purrr.dll로 복사하는데
-## 문제가 발생했습니다: Permission denied</code></pre>
-<pre><code>## Warning: restored &#39;purrr&#39;</code></pre>
-<pre><code>## 
-## The downloaded binary packages are in
-##  C:\Users\kkyj5\AppData\Local\Temp\Rtmp0YRIMl\downloaded_packages</code></pre>
 <pre class="r"><code>library(purrr)</code></pre>
 <pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.0.5</code></pre>
-<pre class="r"><code>map_dbl(25, compute_s_n)</code></pre>
-<pre><code>## [1] 5525</code></pre>
+<pre class="r"><code>map_dbl(1:25, compute_s_n)</code></pre>
+<pre><code>##  [1]    1    5   14   30   55   91  140  204  285  385  506  650  819 1015 1240
+## [16] 1496 1785 2109 2470 2870 3311 3795 4324 4900 5525</code></pre>
 <ol start="11" style="list-style-type: decimal">
 <li>Plot<br />
 Sn versus n. Use points defined by n=1,…,25 .</li>
@@ -560,6 +565,8 @@ Sn=n(n+1)(2n+1)/6 .</li>
 <pre class="r"><code>n &lt;- 25
 compute_s_n(n) == n*(n+1)*(2*n+1)/6</code></pre>
 <pre><code>## [1] TRUE</code></pre>
+</div>
+</div>
 
 
 
