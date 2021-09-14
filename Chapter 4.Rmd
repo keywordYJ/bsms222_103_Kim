@@ -1,6 +1,7 @@
 ---
 title: "Chapter 4 The tidyverse"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
@@ -13,7 +14,7 @@ library(tidyverse)
 ```
 We will learn how to implement the tidyverse approach throughout the book, but before delving into the details, in this chapter we introduce some of the most widely used tidyverse functionality, starting with the dplyr package for manipulating data frames and the purrr package for working with functions. Note that the tidyverse also includes a graphing package, ggplot2, which we introduce later in Chapter 7 in the Data Visualization part of the book; the readr package discussed in Chapter 5; and many others. In this chapter, we first introduce the concept of tidy data and then demonstrate how we use the tidyverse to work with data frames in this format.
  
-##4.1 Tidy data
+## 4.1 Tidy data
 We say that a data table is in tidy format if each row represents one observation and columns represent the different variables available for each of these observations. The murders dataset is an example of a tidy data frame.
 
 #>        state abb region population total
@@ -52,8 +53,9 @@ Although not immediately obvious, as you go through the book you will start to a
 1. Examine the built-in dataset co2. Which of the following is true: 
 
 ```{r}
-data("CO2")
-head(CO2)
+data("co2")
+View(co2)
+co2
 ```
 Answer(A)
 
@@ -100,6 +102,7 @@ head(Orange)
 ```{r}
 head(UCBAdmissions)
 View(UCBAdmissions)
+
 ```
 
 
@@ -113,7 +116,7 @@ The dplyr package from the tidyverse introduces functions that perform some of t
 We want all the necessary information for our analysis to be included in the data table. So the first task is to add the murder rates to our murders data frame. The function mutate takes the data frame as a first argument and the name and values of the variable as a second argument using the convention name = values. So, to add murder rates, we use:
 ```{r}
 
-library(dplyr)
+
 library(dslabs)
 data("murders")
 murders <- mutate(murders, rate = total/ population * 100000)
@@ -177,7 +180,7 @@ murders <- mutate(murders, rank = rank(-rate))
 
 3. With dplyr, we can use select to show only certain columns. For example, with this code we would only show the states and population sizes:
 ```{r}
-select(murders, state, population) %>% head()
+select(murders, state, population)  %>% head()
 ```
 
 Use select to show the state names and abbreviations in murders. Do not redefine murders, just show the results.
