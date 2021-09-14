@@ -1,0 +1,1132 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Chapter 4 The tidyverse},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Chapter 4 The tidyverse}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Up to now we have been manipulating vectors by reordering and subsetting
+them through indexing. However, once we start more advanced analyses,
+the preferred unit for data storage is not the vector but the data
+frame. In this chapter we learn to work directly with data frames, which
+greatly facilitate the organization of information. We will be using
+data frames for the majority of this book. We will focus on a specific
+data format referred to as tidy and on specific collection of packages
+that are particularly helpful for working with tidy data referred to as
+the tidyverse.
+
+We can load all the tidyverse packages at once by installing and loading
+the tidyverse package:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.0.6     v dplyr   1.0.7
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'purrr' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.0.5
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+We will learn how to implement the tidyverse approach throughout the
+book, but before delving into the details, in this chapter we introduce
+some of the most widely used tidyverse functionality, starting with the
+dplyr package for manipulating data frames and the purrr package for
+working with functions. Note that the tidyverse also includes a graphing
+package, ggplot2, which we introduce later in Chapter 7 in the Data
+Visualization part of the book; the readr package discussed in Chapter
+5; and many others. In this chapter, we first introduce the concept of
+tidy data and then demonstrate how we use the tidyverse to work with
+data frames in this format.
+
+\#\#4.1 Tidy data We say that a data table is in tidy format if each row
+represents one observation and columns represent the different variables
+available for each of these observations. The murders dataset is an
+example of a tidy data frame.
+
+\#\textgreater{} state abb region population total \#\textgreater{} 1
+Alabama AL South 4779736 135 \#\textgreater{} 2 Alaska AK West 710231 19
+\#\textgreater{} 3 Arizona AZ West 6392017 232 \#\textgreater{} 4
+Arkansas AR South 2915918 93 \#\textgreater{} 5 California CA West
+37253956 1257 \#\textgreater{} 6 Colorado CO West 5029196 65
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dslabs)}
+\FunctionTok{head}\NormalTok{(murders)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        state abb region population total
+## 1    Alabama  AL  South    4779736   135
+## 2     Alaska  AK   West     710231    19
+## 3    Arizona  AZ   West    6392017   232
+## 4   Arkansas  AR  South    2915918    93
+## 5 California  CA   West   37253956  1257
+## 6   Colorado  CO   West    5029196    65
+\end{verbatim}
+
+Each row represent a state with each of the five columns providing a
+different variable related to these states: name, abbreviation, region,
+population, and total murders.
+
+To see how the same information can be provided in different formats,
+consider the following example:
+
+\#\textgreater{} country year fertility \#\textgreater{} 1 Germany 1960
+2.41 \#\textgreater{} 2 South Korea 1960 6.16 \#\textgreater{} 3 Germany
+1961 2.44 \#\textgreater{} 4 South Korea 1961 5.99 \#\textgreater{} 5
+Germany 1962 2.47 \#\textgreater{} 6 South Korea 1962 5.79 This tidy
+dataset provides fertility rates for two countries across the years.
+This is a tidy dataset because each row presents one observation with
+the three variables being country, year, and fertility rate. However,
+this dataset originally came in another format and was reshaped for the
+dslabs package. Originally, the data was in the following format:
+
+\#\textgreater{} country 1960 1961 1962 \#\textgreater{} 1 Germany 2.41
+2.44 2.47 \#\textgreater{} 2 South Korea 6.16 5.99 5.79 The same
+information is provided, but there are two important differences in the
+format: 1) each row includes several observations and 2) one of the
+variables, year, is stored in the header. For the tidyverse packages to
+be optimally used, data need to be reshaped into tidy format, which you
+will learn to do in the Data Wrangling part of the book. Until then, we
+will use example datasets that are already in tidy format.
+
+Although not immediately obvious, as you go through the book you will
+start to appreciate the advantages of working in a framework in which
+functions use tidy formats for both inputs and outputs. You will see how
+this permits the data analyst to focus on more important aspects of the
+analysis rather than the format of the data.
+
+\#\#4.2 Exercises 1. Examine the built-in dataset co2. Which of the
+following is true:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"CO2"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(CO2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Plant   Type  Treatment conc uptake
+## 1   Qn1 Quebec nonchilled   95   16.0
+## 2   Qn1 Quebec nonchilled  175   30.4
+## 3   Qn1 Quebec nonchilled  250   34.8
+## 4   Qn1 Quebec nonchilled  350   37.2
+## 5   Qn1 Quebec nonchilled  500   35.3
+## 6   Qn1 Quebec nonchilled  675   39.2
+\end{verbatim}
+
+Answer(A)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Examine the built-in dataset ChickWeight. Which of the following is
+  true:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(ChickWeight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   weight Time Chick Diet
+## 1     42    0     1    1
+## 2     51    2     1    1
+## 3     59    4     1    1
+## 4     64    6     1    1
+## 5     76    8     1    1
+## 6     93   10     1    1
+\end{verbatim}
+
+Answer(B)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Examine the built-in dataset BOD. Which of the following is true:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(BOD)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Time demand
+## 1    1    8.3
+## 2    2   10.3
+## 3    3   19.0
+## 4    4   16.0
+## 5    5   15.6
+## 6    7   19.8
+\end{verbatim}
+
+Answer(C)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Which of the following built-in datasets is tidy (you can pick more
+  than one):
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(BJsales)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 200.1 199.5 199.4 198.9 199.0 200.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(BJsales)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(EuStockMarkets)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          DAX    SMI    CAC   FTSE
+## [1,] 1628.75 1678.1 1772.8 2443.6
+## [2,] 1613.63 1688.5 1750.5 2460.2
+## [3,] 1606.51 1678.6 1718.0 2448.2
+## [4,] 1621.04 1684.1 1708.1 2470.4
+## [5,] 1618.16 1686.6 1723.1 2484.7
+## [6,] 1610.61 1671.6 1714.3 2466.8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(EuStockMarkets)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(DNase)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Run       conc density
+## 1   1 0.04882812   0.017
+## 2   1 0.04882812   0.018
+## 3   1 0.19531250   0.121
+## 4   1 0.19531250   0.124
+## 5   1 0.39062500   0.206
+## 6   1 0.39062500   0.215
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(Formaldehyde)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   carb optden
+## 1  0.1  0.086
+## 2  0.3  0.269
+## 3  0.5  0.446
+## 4  0.6  0.538
+## 5  0.7  0.626
+## 6  0.9  0.782
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(Orange)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Tree  age circumference
+## 1    1  118            30
+## 2    1  484            58
+## 3    1  664            87
+## 4    1 1004           115
+## 5    1 1231           120
+## 6    1 1372           142
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(UCBAdmissions)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , Dept = A
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted  512     89
+##   Rejected  313     19
+## 
+## , , Dept = B
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted  353     17
+##   Rejected  207      8
+## 
+## , , Dept = C
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted  120    202
+##   Rejected  205    391
+## 
+## , , Dept = D
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted  138    131
+##   Rejected  279    244
+## 
+## , , Dept = E
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted   53     94
+##   Rejected  138    299
+## 
+## , , Dept = F
+## 
+##           Gender
+## Admit      Male Female
+##   Admitted   22     24
+##   Rejected  351    317
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(UCBAdmissions)}
+\end{Highlighting}
+\end{Shaded}
+
+Answer. b,c,d,e,f
+
+\hypertarget{manipulating-data-frames}{%
+\subsection{4.3 Manipulating data
+frames}\label{manipulating-data-frames}}
+
+The dplyr package from the tidyverse introduces functions that perform
+some of the most common operations when working with data frames and
+uses names for these functions that are relatively easy to remember. For
+instance, to change the data table by adding a new column, we use
+mutate. To filter the data table to a subset of rows, we use filter.
+Finally, to subset the data by selecting specific columns, we use
+select.
+
+\hypertarget{adding-a-column-with-mutate}{%
+\subsubsection{4.3.1 Adding a column with
+mutate}\label{adding-a-column-with-mutate}}
+
+We want all the necessary information for our analysis to be included in
+the data table. So the first task is to add the murder rates to our
+murders data frame. The function mutate takes the data frame as a first
+argument and the name and values of the variable as a second argument
+using the convention name = values. So, to add murder rates, we use:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(dslabs)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"murders"}\NormalTok{)}
+\NormalTok{murders }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(murders, }\AttributeTok{rate =}\NormalTok{ total}\SpecialCharTok{/}\NormalTok{ population }\SpecialCharTok{*} \DecValTok{100000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that here we used total and population inside the function, which
+are objects that are not defined in our workspace. But why don't we get
+an error?
+
+This is one of dplyr's main features. Functions in this package, such as
+mutate, know to look for variables in the data frame provided in the
+first argument. In the call to mutate above, total will have the values
+in murders\$total. This approach makes the code much more readable.
+
+We can see that the new column is added:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(murders)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        state abb region population total     rate
+## 1    Alabama  AL  South    4779736   135 2.824424
+## 2     Alaska  AK   West     710231    19 2.675186
+## 3    Arizona  AZ   West    6392017   232 3.629527
+## 4   Arkansas  AR  South    2915918    93 3.189390
+## 5 California  CA   West   37253956  1257 3.374138
+## 6   Colorado  CO   West    5029196    65 1.292453
+\end{verbatim}
+
+Although we have overwritten the original murders object, this does not
+change the object that loaded with data(murders). If we load the murders
+data again, the original will overwrite our mutated version.
+
+\hypertarget{subsetting-with-filter}{%
+\subsubsection{4.3.2 Subsetting with
+filter}\label{subsetting-with-filter}}
+
+Now suppose that we want to filter the data table to only show the
+entries for which the murder rate is lower than 0.71. To do this we use
+the filter function, which takes the data table as the first argument
+and then the conditional statement as the second. Like mutate, we can
+use the unquoted variable names from murders inside the function and it
+will know we mean the columns and not objects in the workspace.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(murders, rate }\SpecialCharTok{\textless{}=} \FloatTok{0.71}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state abb        region population total      rate
+## 1        Hawaii  HI          West    1360301     7 0.5145920
+## 2          Iowa  IA North Central    3046355    21 0.6893484
+## 3 New Hampshire  NH     Northeast    1316470     5 0.3798036
+## 4  North Dakota  ND North Central     672591     4 0.5947151
+## 5       Vermont  VT     Northeast     625741     2 0.3196211
+\end{verbatim}
+
+\hypertarget{selecting-columns-with-select}{%
+\subsubsection{4.3.3 Selecting columns with
+select}\label{selecting-columns-with-select}}
+
+Although our data table only has six columns, some data tables include
+hundreds. If we want to view just a few, we can use the dplyr select
+function. In the code below we select three columns, assign this to a
+new object and then filter the new object:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_table }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(murders, state, region, rate)}
+\FunctionTok{filter}\NormalTok{(new\_table, rate }\SpecialCharTok{\textless{}=} \FloatTok{0.71}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state        region      rate
+## 1        Hawaii          West 0.5145920
+## 2          Iowa North Central 0.6893484
+## 3 New Hampshire     Northeast 0.3798036
+## 4  North Dakota North Central 0.5947151
+## 5       Vermont     Northeast 0.3196211
+\end{verbatim}
+
+In the call to select, the first argument murders is an object, but
+state, region, and rate are variable names.
+
+\hypertarget{exercises}{%
+\subsection{4.4 Exercises}\label{exercises}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Load the dplyr package and the murders dataset.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(dslabs)}
+\FunctionTok{data}\NormalTok{(murders)}
+\end{Highlighting}
+\end{Shaded}
+
+You can add columns using the dplyr function mutate. This function is
+aware of the column names and inside the function you can call them
+unquoted:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(murders, }\AttributeTok{population\_in\_millions =}\NormalTok{ population }\SpecialCharTok{/} \DecValTok{10}\SpecialCharTok{\^{}}\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can write population rather than murders\$population. The function
+mutate knows we are grabbing columns from murders.
+
+Use the function mutate to add a murders column named rate with the per
+100,000 murder rate as in the example code above. Make sure you redefine
+murders as done in the example code above ( murders \textless- {[}your
+code{]}) so we can keep using this variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(murders, }\AttributeTok{rate =}\NormalTok{ total }\SpecialCharTok{/}\NormalTok{ population }\SpecialCharTok{*}\DecValTok{100000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  If rank(x) gives you the ranks of x from lowest to highest, rank(-x)
+  gives you the ranks from highest to lowest. Use the function mutate to
+  add a column rank containing the rank, from highest to lowest murder
+  rate. Make sure you redefine murders so we can keep using this
+  variable.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders }\OtherTok{\textless{}{-}} \FunctionTok{mutate}\NormalTok{(murders, }\AttributeTok{rank =} \FunctionTok{rank}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{rate))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  With dplyr, we can use select to show only certain columns. For
+  example, with this code we would only show the states and population
+  sizes:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{select}\NormalTok{(murders, state, population) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        state population
+## 1    Alabama    4779736
+## 2     Alaska     710231
+## 3    Arizona    6392017
+## 4   Arkansas    2915918
+## 5 California   37253956
+## 6   Colorado    5029196
+\end{verbatim}
+
+Use select to show the state names and abbreviations in murders. Do not
+redefine murders, just show the results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{select}\NormalTok{(murders, state, abb) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        state abb
+## 1    Alabama  AL
+## 2     Alaska  AK
+## 3    Arizona  AZ
+## 4   Arkansas  AR
+## 5 California  CA
+## 6   Colorado  CO
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  The dplyr function filter is used to choose specific rows of the data
+  frame to keep. Unlike select which is for columns, filter is for rows.
+  For example, you can show just the New York row like this:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(murders, state }\SpecialCharTok{==} \StringTok{"New York"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      state abb    region population total population_in_millions    rate rank
+## 1 New York  NY Northeast   19378102   517                19.3781 2.66796   29
+\end{verbatim}
+
+You can use other logical vectors to filter rows.
+
+Use filter to show the top 5 states with the highest murder rates. After
+we add murder rate and rank, do not change the murders dataset, just
+show the result. Remember that you can filter based on the rank column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(murders, rank }\SpecialCharTok{\textless{}=} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  state abb        region population total
+## 1 District of Columbia  DC         South     601723    99
+## 2            Louisiana  LA         South    4533372   351
+## 3             Maryland  MD         South    5773552   293
+## 4             Missouri  MO North Central    5988927   321
+## 5       South Carolina  SC         South    4625364   207
+##   population_in_millions      rate rank
+## 1               0.601723 16.452753    1
+## 2               4.533372  7.742581    2
+## 3               5.773552  5.074866    4
+## 4               5.988927  5.359892    3
+## 5               4.625364  4.475323    5
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  We can remove rows using the != operator. For example, to remove
+  Florida, we would do this:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{no\_florida }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(murders, state }\SpecialCharTok{!=} \StringTok{"Florida"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Create a new data frame called no\_south that removes states from the
+South region. How many states are in this category? You can use the
+function nrow for this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{no\_south }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(murders, region }\SpecialCharTok{!=} \StringTok{"South"}\NormalTok{)}
+\FunctionTok{nrow}\NormalTok{(no\_south)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 34
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  We can also use \%in\% to filter with dplyr. You can therefore see the
+  data from New York and Texas like this:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(murders, state }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"New York"}\NormalTok{, }\StringTok{"Texas"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      state abb    region population total population_in_millions    rate rank
+## 1 New York  NY Northeast   19378102   517               19.37810 2.66796   29
+## 2    Texas  TX     South   25145561   805               25.14556 3.20136   16
+\end{verbatim}
+
+Create a new data frame called murders\_nw with only the states from the
+Northeast and the West. How many states are in this category?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders\_nw }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(murders, region }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Northeast"}\NormalTok{, }\StringTok{"West"}\NormalTok{))}
+\FunctionTok{nrow}\NormalTok{(murders\_nw)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 22
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Suppose you want to live in the Northeast or West and want the murder
+  rate to be less than 1. We want to see the data for the states
+  satisfying these options. Note that you can use logical operators with
+  filter. Here is an example in which we filter to keep only small
+  states in the Northeast region.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{filter}\NormalTok{(murders, population }\SpecialCharTok{\textless{}} \DecValTok{5000000} \SpecialCharTok{\&}\NormalTok{ region }\SpecialCharTok{==} \StringTok{"Northeast"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state abb    region population total population_in_millions      rate
+## 1   Connecticut  CT Northeast    3574097    97               3.574097 2.7139722
+## 2         Maine  ME Northeast    1328361    11               1.328361 0.8280881
+## 3 New Hampshire  NH Northeast    1316470     5               1.316470 0.3798036
+## 4  Rhode Island  RI Northeast    1052567    16               1.052567 1.5200933
+## 5       Vermont  VT Northeast     625741     2               0.625741 0.3196211
+##   rank
+## 1   25
+## 2   44
+## 3   50
+## 4   35
+## 5   51
+\end{verbatim}
+
+Make sure murders has been defined with rate and rank and still has all
+states. Create a table called my\_states that contains rows for states
+satisfying both the conditions: it is in the Northeast or West and the
+murder rate is less than 1. Use select to show only the state name, the
+rate and the rank.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_state }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(murders, region }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Northeast"}\NormalTok{, }\StringTok{"West"}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ rate }\SpecialCharTok{\textless{}=} \DecValTok{1}\NormalTok{)}
+\FunctionTok{select}\NormalTok{(my\_state, state, rate, rank)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state      rate rank
+## 1        Hawaii 0.5145920   49
+## 2         Idaho 0.7655102   46
+## 3         Maine 0.8280881   44
+## 4 New Hampshire 0.3798036   50
+## 5        Oregon 0.9396843   42
+## 6          Utah 0.7959810   45
+## 7       Vermont 0.3196211   51
+## 8       Wyoming 0.8871131   43
+\end{verbatim}
+
+\hypertarget{the-pipe}{%
+\subsection{4.5. The pipe : \%\textgreater\%}\label{the-pipe}}
+
+With dplyr we can perform a series of operations, for example select and
+then filter, by sending the results of one function to another using
+what is called the pipe operator: \%\textgreater\%. Some details are
+included below.
+
+We wrote code above to show three variables (state, region, rate) for
+states that have murder rates below 0.71. To do this, we defined the
+intermediate object new\_table. In dplyr we can write code that looks
+more like a description of what we want to do without intermediate
+objects:
+
+original data → select → filter
+
+For such an operation, we can use the pipe \%\textgreater\%. The code
+looks like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(state, region, rate) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(rate }\SpecialCharTok{\textless{}=} \FloatTok{0.71}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state        region      rate
+## 1        Hawaii          West 0.5145920
+## 2          Iowa North Central 0.6893484
+## 3 New Hampshire     Northeast 0.3798036
+## 4  North Dakota North Central 0.5947151
+## 5       Vermont     Northeast 0.3196211
+\end{verbatim}
+
+This line of code is equivalent to the two lines of code above. What is
+going on here?
+
+In general, the pipe sends the result of the left side of the pipe to be
+the first argument of the function on the right side of the pipe. Here
+is a very simple example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{16} \SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sqrt}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+We can continue to pipe values along:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{16} \SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sqrt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{log2}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+The above statement is equivalent to log2(sqrt(16)).
+
+Remember that the pipe sends values to the first argument, so we can
+define other arguments as if the first argument is already defined:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{16} \SpecialCharTok{\%\textgreater{}\%} \FunctionTok{sqrt}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{log}\NormalTok{(}\AttributeTok{base =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+Therefore, when using the pipe with data frames and dplyr, we no longer
+need to specify the required first argument since the dplyr functions we
+have described all take the data as the first argument. In the code we
+wrote:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(state, region, rate) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(rate }\SpecialCharTok{\textless{}=} \FloatTok{0.71}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state        region      rate
+## 1        Hawaii          West 0.5145920
+## 2          Iowa North Central 0.6893484
+## 3 New Hampshire     Northeast 0.3798036
+## 4  North Dakota North Central 0.5947151
+## 5       Vermont     Northeast 0.3196211
+\end{verbatim}
+
+murders is the first argument of the select function, and the new data
+frame (formerly new\_table) is the first argument of the filter
+function.
+
+Note that the pipe works well with functions where the first argument is
+the input data. Functions in tidyverse packages like dplyr have this
+format and can be used easily with the pipe.
+
+\hypertarget{exercises-1}{%
+\subsection{4.6 Exercises}\label{exercises-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The pipe \%\textgreater\% can be used to perform operations
+  sequentially without having to define intermediate objects. Start by
+  redefining murder to include rate and rank.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(murders, }\AttributeTok{rate =}\NormalTok{  total }\SpecialCharTok{/}\NormalTok{ population }\SpecialCharTok{*} \DecValTok{100000}\NormalTok{, }
+                  \AttributeTok{rank =} \FunctionTok{rank}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{rate))}
+\end{Highlighting}
+\end{Shaded}
+
+In the solution to the previous exercise, we did the following:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_states }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(murders, region }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Northeast"}\NormalTok{, }\StringTok{"West"}\NormalTok{) }\SpecialCharTok{\&} 
+\NormalTok{                      rate }\SpecialCharTok{\textless{}} \DecValTok{1}\NormalTok{)}
+
+\FunctionTok{select}\NormalTok{(my\_states, state, rate, rank)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state      rate rank
+## 1        Hawaii 0.5145920   49
+## 2         Idaho 0.7655102   46
+## 3         Maine 0.8280881   44
+## 4 New Hampshire 0.3798036   50
+## 5        Oregon 0.9396843   42
+## 6          Utah 0.7959810   45
+## 7       Vermont 0.3196211   51
+## 8       Wyoming 0.8871131   43
+\end{verbatim}
+
+The pipe \%\textgreater\% permits us to perform both operations
+sequentially without having to define an intermediate variable
+my\_states. We therefore could have mutated and selected in the same
+line like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mutate}\NormalTok{(murders, }\AttributeTok{rate =}\NormalTok{  total }\SpecialCharTok{/}\NormalTok{ population }\SpecialCharTok{*} \DecValTok{100000}\NormalTok{, }
+       \AttributeTok{rank =} \FunctionTok{rank}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{rate)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(state, rate, rank)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   state       rate rank
+## 1               Alabama  2.8244238   23
+## 2                Alaska  2.6751860   27
+## 3               Arizona  3.6295273   10
+## 4              Arkansas  3.1893901   17
+## 5            California  3.3741383   14
+## 6              Colorado  1.2924531   38
+## 7           Connecticut  2.7139722   25
+## 8              Delaware  4.2319369    6
+## 9  District of Columbia 16.4527532    1
+## 10              Florida  3.3980688   13
+## 11              Georgia  3.7903226    9
+## 12               Hawaii  0.5145920   49
+## 13                Idaho  0.7655102   46
+## 14             Illinois  2.8369608   22
+## 15              Indiana  2.1900730   31
+## 16                 Iowa  0.6893484   47
+## 17               Kansas  2.2081106   30
+## 18             Kentucky  2.6732010   28
+## 19            Louisiana  7.7425810    2
+## 20                Maine  0.8280881   44
+## 21             Maryland  5.0748655    4
+## 22        Massachusetts  1.8021791   32
+## 23             Michigan  4.1786225    7
+## 24            Minnesota  0.9992600   40
+## 25          Mississippi  4.0440846    8
+## 26             Missouri  5.3598917    3
+## 27              Montana  1.2128379   39
+## 28             Nebraska  1.7521372   33
+## 29               Nevada  3.1104763   19
+## 30        New Hampshire  0.3798036   50
+## 31           New Jersey  2.7980319   24
+## 32           New Mexico  3.2537239   15
+## 33             New York  2.6679599   29
+## 34       North Carolina  2.9993237   20
+## 35         North Dakota  0.5947151   48
+## 36                 Ohio  2.6871225   26
+## 37             Oklahoma  2.9589340   21
+## 38               Oregon  0.9396843   42
+## 39         Pennsylvania  3.5977513   11
+## 40         Rhode Island  1.5200933   35
+## 41       South Carolina  4.4753235    5
+## 42         South Dakota  0.9825837   41
+## 43            Tennessee  3.4509357   12
+## 44                Texas  3.2013603   16
+## 45                 Utah  0.7959810   45
+## 46              Vermont  0.3196211   51
+## 47             Virginia  3.1246001   18
+## 48           Washington  1.3829942   37
+## 49        West Virginia  1.4571013   36
+## 50            Wisconsin  1.7056487   34
+## 51              Wyoming  0.8871131   43
+\end{verbatim}
+
+Notice that select no longer has a data frame as the first argument. The
+first argument is assumed to be the result of the operation conducted
+right before the \%\textgreater\%.
+
+Repeat the previous exercise, but now instead of creating a new object,
+show the result and only include the state, rate, and rank columns. Use
+a pipe \%\textgreater\% to do this in just one line.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{murders }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(region }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Northeast"}\NormalTok{, }\StringTok{"West"}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ rate }\SpecialCharTok{\textless{}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(state, rate, rank)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state      rate rank
+## 1        Hawaii 0.5145920   49
+## 2         Idaho 0.7655102   46
+## 3         Maine 0.8280881   44
+## 4 New Hampshire 0.3798036   50
+## 5        Oregon 0.9396843   42
+## 6          Utah 0.7959810   45
+## 7       Vermont 0.3196211   51
+## 8       Wyoming 0.8871131   43
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Reset murders to the original table by using data(murders). Use a pipe
+  to create a new data frame called my\_states that considers only
+  states in the Northeast or West which have a murder rate lower than 1,
+  and contains only the state, rate and rank columns. The pipe should
+  also have four components separated by three \%\textgreater\%. The
+  code should look something like this:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#my\_states \textless{}{-} murders \%\textgreater{}\%}
+\end{Highlighting}
+\end{Shaded}
+
+mutate SOMETHING \%\textgreater\% filter SOMETHING \%\textgreater\%
+select SOMETHING
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(murders)}
+\NormalTok{my\_states }\OtherTok{\textless{}{-}}\NormalTok{ murders }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{rate =}\NormalTok{ total }\SpecialCharTok{/}\NormalTok{ population }\SpecialCharTok{*} \DecValTok{100000}\NormalTok{, }\AttributeTok{rank =} \FunctionTok{rank}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{rate)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(region }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Northeast"}\NormalTok{, }\StringTok{"West"}\NormalTok{) }\SpecialCharTok{\&}\NormalTok{ rate }\SpecialCharTok{\textless{}} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(state, rate, rank)}
+\NormalTok{my\_states}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           state      rate rank
+## 1        Hawaii 0.5145920   49
+## 2         Idaho 0.7655102   46
+## 3         Maine 0.8280881   44
+## 4 New Hampshire 0.3798036   50
+## 5        Oregon 0.9396843   42
+## 6          Utah 0.7959810   45
+## 7       Vermont 0.3196211   51
+## 8       Wyoming 0.8871131   43
+\end{verbatim}
+
+\end{document}
