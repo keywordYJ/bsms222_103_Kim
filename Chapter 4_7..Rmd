@@ -252,6 +252,9 @@ ref_avg
 ```{r}
 min(ref)
 ```
+```{r}
+max(ref)
+```
 
 4. Compute the average and standard deviation for females, but for each age group separately rather than a selected decade as in question 1. Note that the age groups are defined by AgeDecade. Hint: rather than filtering by age and gender, filter by Gender and then use group_by.
 ```{r}
@@ -274,7 +277,7 @@ NHANES %>% group_by(AgeDecade,Gender)%>% summarize(average = mean(BPSysAve, na.r
 7. For males between the ages of 40-49, compare systolic blood pressure across race as reported in the Race1 variable. Order the resulting table from lowest to highest average systolic blood pressure.
 
 ```{r}
-NHANES %>% filter(AgeDecade == " 40-49" & Gender == "male")%>% group_by(Race1) %>% arrange(BPSysAve)
+NHANES %>% filter(AgeDecade == " 40-49" & Gender == "male")%>% group_by(Race1) %>% summarize(systolicbloodpressur=mean(BPSysAve,na.rm = T))%>% arrange(systolicbloodpressur)
 ```
 ## 4.11 Tibbles
 Tidy data must be stored in data frames. We introduced the data frame in Section 2.4.1 and have been using the murders data frame throughout the book. In Section 4.7.3 we introduced the group_by function, which permits stratifying data before computing summary statistics. But where is the group information stored in the data frame?
