@@ -252,59 +252,58 @@ filename %in% list.files(file.path(dir, &quot;extdata&quot;))</code></pre>
 <p>If a file is copied successfully, the file.copy function returns TRUE. Note that we are giving the file the same name, murders.csv, but we could have named it anything. Also note that by not starting the string with a slash, R assumes this is a relative path and copies the file to the working directory.</p>
 <p>You should be able to see the file in your working directory and can check by using:</p>
 <pre class="r"><code>list.files()</code></pre>
-<pre><code>##  [1] &quot;~$Sepbicycleusage.xlsx&quot;                                 
-##  [2] &quot;2010_bigfive_regents.xls&quot;                               
-##  [3] &quot;bsms222_103_Kim.Rproj&quot;                                  
-##  [4] &quot;carbon_emissions.csv&quot;                                   
-##  [5] &quot;Chapter-2-final.html&quot;                                   
-##  [6] &quot;Chapter-2.html&quot;                                         
-##  [7] &quot;Chapter-4.html&quot;                                         
-##  [8] &quot;Chapter-4.pdf&quot;                                          
-##  [9] &quot;Chapter-4_7..html&quot;                                      
-## [10] &quot;Chapter-4_7..log&quot;                                       
-## [11] &quot;Chapter-4_7..tex&quot;                                       
-## [12] &quot;Chapter-4_final.html&quot;                                   
-## [13] &quot;Chapter-4_final.log&quot;                                    
-## [14] &quot;Chapter-4_final.tex&quot;                                    
-## [15] &quot;Chapter-5.html&quot;                                         
-## [16] &quot;Chapter-5.log&quot;                                          
-## [17] &quot;Chapter-5.Rmd&quot;                                          
-## [18] &quot;Chapter-5.tex&quot;                                          
-## [19] &quot;Chapter 2 final.Rmd&quot;                                    
-## [20] &quot;Chapter 2 git.nb.html&quot;                                  
-## [21] &quot;Chapter 2 git.Rmd&quot;                                      
-## [22] &quot;Chapter 2.nb.html&quot;                                      
-## [23] &quot;Chapter 2.Rmd&quot;                                          
-## [24] &quot;chapter 4-5.nb.html&quot;                                    
-## [25] &quot;Chapter 4.nb.html&quot;                                      
-## [26] &quot;Chapter 4.Rmd&quot;                                          
-## [27] &quot;Chapter 4_7..nb.html&quot;                                   
-## [28] &quot;Chapter 4_7..Rmd&quot;                                       
-## [29] &quot;Chapter 4_final.Rmd&quot;                                    
-## [30] &quot;Chapter 5.nb.html&quot;                                      
-## [31] &quot;Chapter 5.Rmd&quot;                                          
-## [32] &quot;chapter3-Programming-basics.html&quot;                       
-## [33] &quot;chapter3 Programming basics.nb.html&quot;                    
-## [34] &quot;chapter3 Programming basics.Rmd&quot;                        
-## [35] &quot;fertility-two-countries-example.csv&quot;                    
-## [36] &quot;HRlist2.txt&quot;                                            
-## [37] &quot;jj.R&quot;                                                   
-## [38] &quot;KakaoTalk_20210926_221243455.jpg&quot;                       
-## [39] &quot;life-expectancy-and-fertility-two-countries-example.csv&quot;
-## [40] &quot;murders.csv&quot;                                            
-## [41] &quot;olive.csv&quot;                                              
-## [42] &quot;RD-Mortality-Report_2015-18-180531.pdf&quot;                 
-## [43] &quot;README.md&quot;                                              
-## [44] &quot;SCN2A.html&quot;                                             
-## [45] &quot;SCN2A.log&quot;                                              
-## [46] &quot;SCN2A.Rmd&quot;                                              
-## [47] &quot;SCN2A.tex&quot;                                              
-## [48] &quot;scn2apdf.html&quot;                                          
-## [49] &quot;scn2apdf.Rmd&quot;                                           
-## [50] &quot;Sep bicycle usage.xlsx&quot;                                 
-## [51] &quot;Sepbicycleusage.xlsx&quot;                                   
-## [52] &quot;ssa-death-probability.csv&quot;                              
-## [53] &quot;test.Rmd&quot;</code></pre>
+<pre><code>##  [1] &quot;2010_bigfive_regents.xls&quot;                               
+##  [2] &quot;bsms222_103_Kim.Rproj&quot;                                  
+##  [3] &quot;carbon_emissions.csv&quot;                                   
+##  [4] &quot;Chapter-2-final.html&quot;                                   
+##  [5] &quot;Chapter-2.html&quot;                                         
+##  [6] &quot;Chapter-4.html&quot;                                         
+##  [7] &quot;Chapter-4.pdf&quot;                                          
+##  [8] &quot;Chapter-4_7..html&quot;                                      
+##  [9] &quot;Chapter-4_7..log&quot;                                       
+## [10] &quot;Chapter-4_7..tex&quot;                                       
+## [11] &quot;Chapter-4_final.html&quot;                                   
+## [12] &quot;Chapter-4_final.log&quot;                                    
+## [13] &quot;Chapter-4_final.tex&quot;                                    
+## [14] &quot;Chapter-5.html&quot;                                         
+## [15] &quot;Chapter-5.log&quot;                                          
+## [16] &quot;Chapter-5.Rmd&quot;                                          
+## [17] &quot;Chapter-5.tex&quot;                                          
+## [18] &quot;Chapter 2 final.Rmd&quot;                                    
+## [19] &quot;Chapter 2 git.nb.html&quot;                                  
+## [20] &quot;Chapter 2 git.Rmd&quot;                                      
+## [21] &quot;Chapter 2.nb.html&quot;                                      
+## [22] &quot;Chapter 2.Rmd&quot;                                          
+## [23] &quot;chapter 4-5.nb.html&quot;                                    
+## [24] &quot;Chapter 4.nb.html&quot;                                      
+## [25] &quot;Chapter 4.Rmd&quot;                                          
+## [26] &quot;Chapter 4_7..nb.html&quot;                                   
+## [27] &quot;Chapter 4_7..Rmd&quot;                                       
+## [28] &quot;Chapter 4_final.Rmd&quot;                                    
+## [29] &quot;Chapter 5.nb.html&quot;                                      
+## [30] &quot;Chapter 5.Rmd&quot;                                          
+## [31] &quot;chapter3-Programming-basics.html&quot;                       
+## [32] &quot;chapter3 Programming basics.nb.html&quot;                    
+## [33] &quot;chapter3 Programming basics.Rmd&quot;                        
+## [34] &quot;fertility-two-countries-example.csv&quot;                    
+## [35] &quot;HRlist2.txt&quot;                                            
+## [36] &quot;jj.R&quot;                                                   
+## [37] &quot;KakaoTalk_20210926_221243455.jpg&quot;                       
+## [38] &quot;life-expectancy-and-fertility-two-countries-example.csv&quot;
+## [39] &quot;murders.csv&quot;                                            
+## [40] &quot;olive.csv&quot;                                              
+## [41] &quot;RD-Mortality-Report_2015-18-180531.pdf&quot;                 
+## [42] &quot;README.md&quot;                                              
+## [43] &quot;SCN2A.html&quot;                                             
+## [44] &quot;SCN2A.log&quot;                                              
+## [45] &quot;SCN2A.Rmd&quot;                                              
+## [46] &quot;SCN2A.tex&quot;                                              
+## [47] &quot;scn2apdf.html&quot;                                          
+## [48] &quot;scn2apdf.Rmd&quot;                                           
+## [49] &quot;Sep bicycle usage.xlsx&quot;                                 
+## [50] &quot;Sepbicycleusage.xlsx&quot;                                   
+## [51] &quot;ssa-death-probability.csv&quot;                              
+## [52] &quot;test.Rmd&quot;</code></pre>
 </div>
 </div>
 <div id="the-readr-and-readxl-packages" class="section level2">
@@ -391,10 +390,7 @@ files</code></pre>
 ## [7] &quot;olive.csv&quot;                                              
 ## [8] &quot;RD-Mortality-Report_2015-18-180531.pdf&quot;                 
 ## [9] &quot;ssa-death-probability.csv&quot;</code></pre>
-</div>
-</div>
-<div id="according-to-the-problem-i-need-to-open-files-no.-235679.-but-as-an-exercise-i-opened-it-all." class="section level1">
-<h1>according to the problem, i need to open files no. 2,3,5,6,7,9. But as an exercise i opened it all.</h1>
+<p>according to the problem, i need to open files no. 2,3,5,6,7,9. But as an exercise i opened it all.</p>
 <pre class="r"><code>install.packages(&quot;readxl&quot;)</code></pre>
 <pre><code>## Warning: 패키지 &#39;readxl&#39;가 사용중이므로 설치되지 않을 것입니다</code></pre>
 <pre class="r"><code>library(readxl)
@@ -489,7 +485,7 @@ no.7</code></pre>
 <pre><code>## package &#39;pdftools&#39; successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-##  C:\Users\kkyj5\AppData\Local\Temp\Rtmpi8xmrx\downloaded_packages</code></pre>
+##  C:\Users\kkyj5\AppData\Local\Temp\RtmpukxjZu\downloaded_packages</code></pre>
 <pre class="r"><code>library(pdftools)</code></pre>
 <pre><code>## Using poppler version 21.04.0</code></pre>
 <pre class="r"><code>filename &lt;- &quot;RD-Mortality-Report_2015-18-180531.pdf&quot;
@@ -543,8 +539,9 @@ dat</code></pre>
 <pre><code>##  [1] &quot;V1&quot;  &quot;V2&quot;  &quot;V3&quot;  &quot;V4&quot;  &quot;V5&quot;  &quot;V6&quot;  &quot;V7&quot;  &quot;V8&quot;  &quot;V9&quot;  &quot;V10&quot; &quot;V11&quot; &quot;V12&quot;</code></pre>
 <p>to see that the names are not informative.</p>
 <p>Use the readLines function to read in just the first line (we later learn how to extract values from the output).</p>
-<pre class="r"><code>read_lines(&quot;olive.csv&quot;, n_max = 1)</code></pre>
+<pre class="r"><code>read_lines(&quot;Olive.csv&quot;, n_max = 1)</code></pre>
 <pre><code>## [1] &quot;,Region,Area,palmitic,palmitoleic,stearic,oleic,linoleic,linolenic,arachidic,eicosenoic&quot;</code></pre>
+</div>
 <div id="downloading-files" class="section level2">
 <h2>5.4 Downloading files</h2>
 <p>Another common place for data to reside is on the internet. When these data are in files, we can download them and then import them or even read them directly from the web. For example, we note that because our dslabs package is on GitHub, the file we downloaded with the package has a url:</p>
@@ -606,7 +603,6 @@ x[1:10]</code></pre>
 <li><p>Use Data Validation to Avoid Errors - Leverage the tools in your spreadsheet software so that the process is as error-free and repetitive-stress-injury-free as possible.</p></li>
 <li><p>Save the Data as Text Files - Save files for sharing in comma or tab delimited format.</p></li>
 </ul>
-<p>```</p>
 </div>
 </div>
 

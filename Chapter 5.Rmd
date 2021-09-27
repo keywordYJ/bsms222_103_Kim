@@ -3,7 +3,10 @@ title: "Chapter 5"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 ---
+
+
 # Chapter 5 Importing data
 We have been using data sets already stored as R objects. A data scientist will rarely have such luck and will have to import data into R from either a file, a database, or other sources. Currently, one of the most common ways of storing and sharing data for analysis is through electronic spreadsheets. A spreadsheet stores data in rows and columns. It is basically a file version of a data frame. When saving such a table to a computer file, one needs a way to define when a new row or column ends and the other begins. This in turn defines the cells in which single values are stored.
 
@@ -164,11 +167,15 @@ The Microsoft Excel formats permit you to have more than one spreadsheet in one 
 
 ## 5.3 Exercises
 1. Use the read_csv function to read each of the files that the following code saves in the files object:
+
+
 ```{r}
 path <- system.file("extdata", package = "dslabs")
 files <- list.files(path)
 files
 ```
+according to the problem, i need to open files no. 2,3,5,6,7,9. But as an exercise i opened it all.
+
 ```{r}
 install.packages("readxl")
 library(readxl)
@@ -300,7 +307,7 @@ to see that the names are not informative.
 Use the readLines function to read in just the first line (we later learn how to extract values from the output).
 
 ```{r}
-read_lines("olive.csv", n_max = 1)
+read_lines("Olive.csv", n_max = 1)
 ```
 
 ## 5.4 Downloading files
@@ -397,15 +404,4 @@ Although this book focuses almost exclusively on data analysis, data management 
 
 * Save the Data as Text Files - Save files for sharing in comma or tab delimited format.
 
-## 5.9 Exercises
-1. Pick a measurement you can take on a regular basis. For example, your daily weight or how long it takes you to run 5 miles. Keep a spreadsheet that includes the date, the hour, the measurement, and any other informative variable you think is worth keeping. Do this for 2 weeks. Then make a plot.
-
-
-```{r}
-TTa_reungi <- read_excel("Sep bicycle usage.xlsx")
-TTa_reungi
-```
-```{r}
-plot(TTa_reungi$date, TTa_reungi$kcal)
-```
 
