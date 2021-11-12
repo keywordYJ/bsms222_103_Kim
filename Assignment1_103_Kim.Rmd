@@ -129,7 +129,7 @@ p5_group4$Median <- apply(p5_group4[,2:24],1,median)
 ### 2.2.3 Select the gene we want to see.
 
 Pro-tumorigenic inflammation
-M2 macrophages(CD163), T-regs(CD4, CD25, FoxP3)
+M2 macrophages(CD163), T-regs(CD3D, CD3E, CD3G, CD4, FoxP3)
 
 Immune Checkpoints
 PD-1(PDCD1) ,PD-L1(CD274), LAG3, TIGIT
@@ -145,12 +145,12 @@ IL6-STAT5 (IL6, STAT5), IL2-JAK-STAT5(STAT5A, STAT5B, IL2RA, IL2RG)
 
 **Pro-tumorigenic inflammation**
 
-M2 macrophages(CD163), T-regs(CD4,CD25,FoxP3)
+M2 macrophages(CD163), T-regs(CD3D, CD3E, CD3G, CD4, FoxP3)
 ```{r}
 ## Visualize geom_point
 
 ### Immune cell
-immune_cell <- c("CD163","CD4","CD25", "FOXP3")
+immune_cell <- c("CD3D","CD3E","CD3G","CD4", "FOXP3","CD163")
 p5_group1.c <- p5_group1 %>% filter(gene %in% immune_cell) %>% select(gene, Median) %>% mutate(group = "Group I")
 p5_group2.c <- p5_group2 %>% filter(gene %in% immune_cell) %>% select(gene, Median) %>% mutate(group = "Group II")
 p5_group3.c <- p5_group3 %>% filter(gene %in% immune_cell) %>% select(gene, Median) %>% mutate(group = "Group III")
