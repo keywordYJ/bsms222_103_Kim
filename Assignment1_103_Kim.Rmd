@@ -14,14 +14,14 @@ Immune cell =T-reg(CD3,CD4,CD25,FoxP3), M2(CD163)
 
 Immune checkpoint = PD-1(PDCD1) ,PD-L1(CD274), LAG3, TIGIT
 
-Immune surpressive pathway =IL6-STAT5 (IL6, STAT5), IL2-JAK-STAT5(STAT5A, STAT5B, IL2RA,IL2RG)
+Immune surpressive pathway = IL6-STAT5(IL6, STAT5), IL2-JAK-STAT5(STAT5A, STAT5B, IL2RA, IL2RG)
 
 ## 2. Data Visualization
 ### 2.1 Data Visualization plan
 1. Exploring data
 2. Grouping patients by Tumor purity level
-3. Select the gene we want to see.
-4. Visualize geom_point
+3. Select the gene 
+4. Visualizing data
 5. Combine plots
 
 
@@ -36,7 +36,7 @@ library(ggplot2)
 ```
 
 
-Load "Tumor purity table". Both tumor tissue and normal tissue of patients' tumor purity is calculated. So I removed normal tissue to avoid overlapping patient code.
+Load "Tumor purity table". Both tumor tissue and normal tissue of patients' tumor purity is calculated. So I removed normal tissue to avoid patient code overlap.
 ```{r}
 # Load Tumor purity table
 p = read_excel('portfolio/1-s2.0-S0092867420307431-mmc7.xlsx', sheet=4)
@@ -80,7 +80,7 @@ p5 = read_excel('portfolio/1-s2.0-S0092867420307431-mmc1.xlsx', sheet=5)
 
 ### 2.2.2 Grouping patients by Tumor purity level
 
-New median values are defined by extracting patients divided into groups.
+New median values are defined by extracted patients, divided according to purity.
 
 
 ```{r}
@@ -129,13 +129,13 @@ p5_group4$Median <- apply(p5_group4[,2:24],1,median)
 ### 2.2.3 Select the gene we want to see.
 
 Pro-tumorigenic inflammation
-M2 macrophages(CD163), T-regs(CD4,CD25,FoxP3)
+M2 macrophages(CD163), T-regs(CD4, CD25, FoxP3)
 
 Immune Checkpoints
 PD-1(PDCD1) ,PD-L1(CD274), LAG3, TIGIT
 
 Immune surpressive pathway 
-IL6-STAT5 (IL6, STAT5), IL2-JAK-STAT5(STAT5A, STAT5B, IL2RA,IL2RG)
+IL6-STAT5 (IL6, STAT5), IL2-JAK-STAT5(STAT5A, STAT5B, IL2RA, IL2RG)
 
 
 
@@ -288,7 +288,7 @@ ggsave('plot.relationship_betweeen_tumor_purity_and_immune_subtypes.pdf', plot, 
 ## 3. Result
 As a result of visualization, it can be seen that the lower the tumor purity, the greater the expression of the immune system. I initially divided TW LUAD cohort into four groups based on tumor purity,setting low value to group I. And made a boxplot to show the sample size of each group used in the analysis. After that, I filtered the patients to confirm the expression of the gene. 
 
-When identifying immune cell genes, T-regs and M2 macrophages marker gene was chosen. Because they are related to pro-tumorigenic inflammation. M2 class have been associated with wound healing and tissue repair, while M1 is associated with mounting defense against infectious agents.Immune checkpoints are regulators of the immune system. These pathways are crucial for immune-tolerance, which prevents the immune system from attacking cells indiscriminately. However, cancers can protect themselves from attack by stimulating immune checkpoint targets. As for the IL6-JAK-STAT3 signaling, prior studies showed it involved in tumor growth, metastasis, and the immune escaping. Based on these facts, the gene of interest was selected and the correlation between tumor purity and immune subtype was confirmed.In all three categories(Immune cell,Immune checkpoint,Immune suppressive pathway), it was confirmed that the lower the tumor purity, the higher the gene expression level.
+When identifying immune cell genes, T-regs and M2 macrophages marker gene was chosen. Because they are related to pro-tumorigenic inflammation. M2 class have been associated with wound healing and tissue repair, while M1 is associated with mounting defense against infectious agents. Immune checkpoints are regulators of the immune system. These pathways are crucial for immune-tolerance, which prevents the immune system from attacking cells indiscriminately. However, cancers can protect themselves from attack by stimulating immune checkpoint targets. As for the IL6-JAK-STAT3 signaling, prior studies showed it involved in tumor growth, metastasis, and the immune escaping. Based on these facts, the gene of interest was selected and the correlation between tumor purity and immune subtype was confirmed.In all three categories(Immune cell,Immune checkpoint,Immune suppressive pathway), it was confirmed that the lower the tumor purity, the higher the gene expression level.
 
 
 ## 4 Discussion
